@@ -22,7 +22,7 @@ jQuery(function($){
       var t = $(this),
           input = t.find("input");
 
-      // t.children().hide(); //hide actual input
+      t.children().hide(); //hide actual input
 
       function calc_sliders(e,ui){
         var t = $(this);

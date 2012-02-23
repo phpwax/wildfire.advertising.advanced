@@ -1,5 +1,5 @@
 <?
-  CMSApplication::register_module("advertising", array("display_name"=>"Advertising", "link"=>"/admin/advertising/", 'split'=>true));
+  CMSApplication::register_module("advertising", array('plugin_name'=>'wildfire.advertising.advanced', 'assets_for_cms'=>true, "display_name"=>"Advertising", "link"=>"/admin/advertising/", 'split'=>true));
 
   if(!defined("CONTENT_MODEL")){
     $con = new ApplicationController(false, false);

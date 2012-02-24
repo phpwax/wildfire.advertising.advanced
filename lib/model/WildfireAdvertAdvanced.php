@@ -27,6 +27,6 @@ class WildfireAdvertAdvanced extends WaxModel{
   }
 
   public function link(){
-    return $this->link
+    return $this->link;
   }
 }?>

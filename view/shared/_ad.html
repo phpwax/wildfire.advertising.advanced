@@ -1,0 +1,7 @@
+<?
+  $ads = $cms_content->ads;
+  if($ad_type) $ads = $ads->filter("type", $ad_type)->all();
+  if($ads->count()):
+    $advert = $ads[floor(rand(1, $ads->count())) - 1]; ?>
+    <a href="<?=$advert->link?>"><?=$advert->render()?></a>
+  <?endif?>

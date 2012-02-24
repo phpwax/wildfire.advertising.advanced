@@ -25,4 +25,8 @@ class WildfireAdvertAdvanced extends WaxModel{
   public function render($width){
     return $this->media[0]->render($width);
   }
+
+  public function link(){
+    return $this->link
+  }
 }?>

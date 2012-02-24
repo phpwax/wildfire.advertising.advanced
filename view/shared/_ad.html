@@ -5,7 +5,7 @@
   shuffle($ads->rowset);
   while($num--){
     if($advert = $ads[$num]){
-      echo "<a href=".$advert->link.">".$advert->render()."</a>";
+      echo "<a href=".$advert->link().">".$advert->render()."</a>";
     }
   }
 ?>

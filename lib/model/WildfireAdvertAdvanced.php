@@ -29,4 +29,8 @@ class WildfireAdvertAdvanced extends WaxModel{
   public function permalink(){
     return $this->link;
   }
+
+  public function groups(){
+    return $this->ad_types[$this->type];
+  }
 }?>

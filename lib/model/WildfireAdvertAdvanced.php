@@ -19,11 +19,11 @@ class WildfireAdvertAdvanced extends WaxModel{
   }
 
   public function preview(){
-    return $this->media[0]->preview();
+    if($media = $this->media[0]) return $media->preview();
   }
 
   public function render($width){
-    return $this->media[0]->render($width);
+    if($media = $this->media[0]) return $media->render($width);
   }
 
   public function permalink(){

@@ -1,11 +1,8 @@
 <?
   if(!$num) $num = 1;
-  $ads = $cms_content->ads;
-  if($ad_type) $ads = $ads->filter("type", $ad_type)->all();
-  shuffle($ads->rowset);
-  while($num--){
-    if($advert = $ads[$num]){
-      echo "<a href=".$advert->link().">".$advert->render()."</a>";
-    }
+  if($ad_type) $type_filter = array("type"=>$ad_type);
+  $ads = $cms_content->ads($type_filter);
+  foreach(WaxModelWeightedJoin::weighted_random($ads, $num) as $ad){
+    echo "<a href=".$ad->permalink().">".$ad->render()."</a>";
   }
 ?>

@@ -1,1 +1,5 @@
 Needs V7 of the cms
+
+Advertising module should appear where you can create ads in the cms with title, link and type. An advertisement tab should appear on content where you can join ads to content, the joins allow for weights to show some ads more/less often than others.
+
+For frontend use: partial("_ad", array("ad_type"=>"mpu", "num"=>2)) . The type and num are both optional. You should get a series of a tags containing the first attached media to the ad. The output here is a weighted random.

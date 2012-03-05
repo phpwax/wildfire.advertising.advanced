@@ -1,0 +1,3 @@
+<?
+class AController extends WildfireAdvancedAdvertising{}
+?>

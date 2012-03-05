@@ -9,7 +9,7 @@ class WildfireAdvancedAdvertisingController extends ApplicationController{
       $link = $found->link;
       $found = $found->update_attributes(array('clicks'=>$found->clicks+1));
     }
-    $this->redirect_to($link, 301);
+    $this->redirect_to($link, "http://", 301);
   }
 
 }?>

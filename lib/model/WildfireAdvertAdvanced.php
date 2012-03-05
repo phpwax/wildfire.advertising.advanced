@@ -17,7 +17,7 @@ class WildfireAdvertAdvanced extends WaxModel{
 
   public function before_insert(){
     if(!$this->title) $this->title = "Enter your title here";
-    if(!$this->hashtag) $this->hashtag = hash_hmac("sha1", serialize($this->row), microtime());
+    if(!$this->hashtag) $this->hashtag = hash_hmac("sha1", $this->link, time());
     if(!$this->impressions) $this->impressions = 0;
     if(!$this->clicks) $this->clicks = 0;
   }

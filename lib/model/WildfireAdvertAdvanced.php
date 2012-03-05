@@ -15,7 +15,7 @@ class WildfireAdvertAdvanced extends WaxModel{
     $this->define("media", "ManyToManyField", array('target_model'=>"WildfireMedia", "eager_loading"=>true, "join_model_class"=>"WildfireOrderedTagJoin", "join_order"=>"join_order", 'group'=>'media', 'module'=>"media"));
   }
 
-  public function before_insert(){
+  public function before_save(){
     if(!$this->title) $this->title = "Enter your title here";
     if(!$this->hashtag) $this->hashtag = hash_hmac("sha1", $this->link, time());
     if(!$this->impressions) $this->impressions = 0;

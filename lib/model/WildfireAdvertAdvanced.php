@@ -10,12 +10,16 @@ class WildfireAdvertAdvanced extends WaxModel{
     $this->define("link", "CharField", array('required'=>true));
     $this->define("impressions", "IntegerField", array('editable'=>false,'scaffold'=>true));
     $this->define("clicks", "IntegerField", array('editable'=>false,'scaffold'=>true));
+    $this->define("hash", "CharField", array('editable'=>false));
 
     $this->define("media", "ManyToManyField", array('target_model'=>"WildfireMedia", "eager_loading"=>true, "join_model_class"=>"WildfireOrderedTagJoin", "join_order"=>"join_order", 'group'=>'media', 'module'=>"media"));
   }
 
   public function before_insert(){
     if(!$this->title) $this->title = "Enter your title here";
+    if(!$this->hash) $this->hash = hash_hmac("sha1", serialize($this->row), microtime());
+    if(!$this->impressions) $this->impressions = 0;
+    if(!$this->clicks) $this->clicks = 0;
   }
 
   public function preview(){
@@ -23,11 +27,12 @@ class WildfireAdvertAdvanced extends WaxModel{
   }
 
   public function render($width){
+    $this->update_attributes(array('impressions'=>$this->impressions+1));
     if($media = $this->media[0]) return $media->render($width);
   }
 
   public function permalink(){
-    return $this->link;
+    return "/a/".$this->hash."/";
   }
 
   public function groups(){

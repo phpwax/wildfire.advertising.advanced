@@ -3,6 +3,6 @@
   if($ad_type) $type_filter = array("type"=>$ad_type);
   $ads = $cms_content->ads($type_filter);
   foreach(WaxModelWeightedJoin::weighted_random($ads, $num) as $ad){
-    echo "<a href=".$ad->permalink().">".$ad->render()."</a>";
+    echo "<div class='block'><a href=".$ad->permalink()." class='link'>".$ad->render()."</a></div>";
   }
 ?>

@@ -1,3 +1,3 @@
 <?
-class AController extends WildfireAdvancedAdvertising{}
+class AController extends WildfireAdvancedAdvertisingController{}
 ?>

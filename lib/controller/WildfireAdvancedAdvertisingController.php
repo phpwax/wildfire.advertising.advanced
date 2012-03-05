@@ -1,5 +1,5 @@
 <?
-class WildfireAdvancedAdvertising extends ApplicationController{
+class WildfireAdvancedAdvertisingController extends ApplicationController{
 
 
   public function method_missing(){

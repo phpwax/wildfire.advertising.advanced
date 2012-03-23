@@ -5,7 +5,7 @@ class WildfireAdvancedAdvertisingController extends ApplicationController{
   public function method_missing(){
     $link = "/";
     $model = new WildfireAdvertAdvanced;
-    if( ($hash = Request::param("id")) && ($found = $model->filter("hash", $hash)->first()) ){
+    if( ($hash = $this->route_array[1]) && ($found = $model->filter("hashtag", $hash)->first()) ){
       $link = $found->link;
       $found = $found->update_attributes(array('clicks'=>$found->clicks+1));
     }

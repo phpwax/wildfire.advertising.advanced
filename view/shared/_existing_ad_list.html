@@ -1,0 +1,9 @@
+<?foreach($model->$field as $i=>$media) $groups[$media->type][] = $media?>
+<?foreach($groups as $group => $ads):?>
+  <div class='existing-files clearfix <?=?>' data-field="<?=$field?>">
+    <input type="hidden" name="joins[<?=$field?>][0]" value="0" class='default_value_to_unset_join'>
+    <?foreach($ads as $media):?>
+      <?=partial("_existing_media",array('media'=>$media, 'field'=>$field, 'extra_fields_view'=>$field_data->extra_fields_view))?>
+    <?endforeach?>
+  </div>
+<?endforeach?>

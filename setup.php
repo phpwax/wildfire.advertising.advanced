@@ -8,6 +8,6 @@
 
   WaxEvent::add(CONTENT_MODEL.".setup", function(){
     $model = WaxEvent::data();
-    if(!$model->columns['ads']) $model->define("ads", "ManyToManyField", array('target_model'=>'WildfireAdvertAdvanced', "eager_loading"=>true, "join_model_class"=>"WaxModelWeightedJoin", "join_order"=>"weight DESC", 'group'=>'advertising', 'module'=>'advertising', 'extra_fields_view'=>'_advertising_extra_fields'));
+    if(!$model->columns['ads']) $model->define("ads", "ManyToManyField", array('target_model'=>'WildfireAdvertAdvanced', "eager_loading"=>true, "join_model_class"=>"WaxModelWeightedJoin", "join_order"=>"weight DESC", 'group'=>'advertising', 'module'=>'advertising', 'extra_fields_view'=>'_advertising_extra_fields', 'existing_media_list'=>'_existing_ad_list'));
   });
 ?>

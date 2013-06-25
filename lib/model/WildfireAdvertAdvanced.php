@@ -5,14 +5,14 @@ class WildfireAdvertAdvanced extends WaxModel{
   public function setup(){
     if($types = Config::get("adverts/types")) $this->ad_types = $types;
 
-    $this->define("title", "CharField", array('required'=>true,'scaffold'=>true));
-    $this->define("type", "CharField", array('widget'=>'SelectInput', 'choices'=>WildfireAdvertAdvanced::$ad_types,'scaffold'=>true));
-    $this->define("link", "CharField", array('required'=>true));
-    $this->define("impressions", "IntegerField", array('editable'=>false,'scaffold'=>true));
-    $this->define("clicks", "IntegerField", array('editable'=>false,'scaffold'=>true));
-    $this->define("hashtag", "CharField", array('editable'=>false));
+    $this->define("title", "CharField", array('required'=>true,'scaffold'=>true, 'group'=>'advertisement', 'primary_group'=>1));
+    $this->define("type", "CharField", array('widget'=>'SelectInput', 'choices'=>WildfireAdvertAdvanced::$ad_types,'scaffold'=>true, 'group'=>'advertisement', 'primary_group'=>1));
+    $this->define("link", "CharField", array('required'=>true, 'group'=>'advertisement', 'primary_group'=>1));
+    $this->define("impressions", "IntegerField", array('editable'=>false,'scaffold'=>true, 'group'=>'advertisement', 'primary_group'=>1));
+    $this->define("clicks", "IntegerField", array('editable'=>false,'scaffold'=>true, 'group'=>'advertisement', 'primary_group'=>1));
+    $this->define("hashtag", "CharField", array('editable'=>false, 'group'=>'advertisement', 'primary_group'=>1));
 
-    $this->define("media", "ManyToManyField", array('target_model'=>"WildfireMedia", "eager_loading"=>true, "join_model_class"=>"WildfireOrderedTagJoin", "join_order"=>"join_order", 'group'=>'media', 'module'=>"media"));
+    $this->define("media", "ManyToManyField", array('target_model'=>"WildfireMedia", "eager_loading"=>true, "join_model_class"=>"WildfireOrderedTagJoin", "join_order"=>"join_order", 'group'=>'media', 'module'=>"media", 'primary_group'=>1));
   }
 
   public function before_save(){

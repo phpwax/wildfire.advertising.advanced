@@ -6,12 +6,4 @@ class CMSAdminAdvertisingController extends AdminComponent{
   public $display_name = "Advertising";
   public $dashboard = false;
   public $file_tags = array('media');
-
-  public function events(){
-    WaxEvent::add("cms.model.columns", function(){
-      $obj = WaxEvent::data();
-      $obj->scaffold_columns['preview'] = true;
-    });
-    parent::events();
-  }
 }?>

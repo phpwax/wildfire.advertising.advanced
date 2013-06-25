@@ -1,0 +1,13 @@
+{
+    "name": "phpwax/wildfire.advertising.advanced",
+    "description": "advertising module with weighting",
+    "authors": [
+        {
+            "name": "Sheldon Els",
+            "email": "sheldon.els@gmail.com"
+        }
+    ],
+    "require": {
+
+    }
+}

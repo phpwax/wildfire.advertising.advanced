@@ -7,8 +7,14 @@
             "email": "sheldon.els@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
     "require": {
 
+    },
+    "license": "MIT",
+    "autoload": {
+      "classmap": [
+        "lib/", "resources/", "view/"
+      ],
+      "files": ["ini.php"]
     }
 }

@@ -1,5 +1,5 @@
 <?
-class CMSAdminAdvertisingController extends AdminComponent{
+class CMSAdminAdvertisingController extends AdminMediaController{
 
   public $module_name = "advertising";
   public $model_class = 'WildfireAdvertAdvanced';

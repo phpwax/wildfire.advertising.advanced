@@ -14,7 +14,6 @@ class WildfireAdvertAdvanced extends WaxModel{
 
     $this->define("media", "ManyToManyField", array('target_model'=>"WildfireMedia", "eager_loading"=>true, "join_model_class"=>"WildfireOrderedTagJoin", "join_order"=>"join_order", 'group'=>'media', 'module'=>"media"));
 
-    $this->define("date_modified", "DateTimeField", array('export'=>true, 'scaffold'=>true, 'editable'=>false));
     $this->define("date_created", "DateTimeField", array('export'=>true, 'scaffold'=>true, 'editable'=>false));
   }
 
@@ -24,7 +23,6 @@ class WildfireAdvertAdvanced extends WaxModel{
     if(!$this->impressions) $this->impressions = 0;
     if(!$this->clicks) $this->clicks = 0;
     if($this->columns['date_created'] && !$this->date_created) $this->date_created = date("Y-m-d H:i:s");
-    if($this->columns['date_modified']) $this->date_modified = date("Y-m-d H:i:s");
   }
 
   public function preview(){

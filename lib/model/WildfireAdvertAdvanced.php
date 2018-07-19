@@ -5,9 +5,9 @@ class WildfireAdvertAdvanced extends WaxModel{
   public function setup(){
     if($types = Config::get("adverts/types")) $this->ad_types = $types;
 
-    $this->define("title", "CharField", array('required'=>true,'scaffold'=>true));
-    $this->define("type", "CharField", array('widget'=>'SelectInput', 'choices'=>WildfireAdvertAdvanced::$ad_types,'scaffold'=>true));
-    $this->define("link", "CharField", array('required'=>true));
+    $this->define("title", "CharField", array('required'=>true,'scaffold'=>true,'group'=>'content','primary_group'=>1));
+    $this->define("type", "CharField", array('widget'=>'SelectInput', 'choices'=>WildfireAdvertAdvanced::$ad_types,'scaffold'=>true,'group'=>'content','primary_group'=>1));
+    $this->define("link", "CharField", array('required'=>true,'group'=>'content','primary_group'=>1));
     $this->define("impressions", "IntegerField", array('editable'=>false,'scaffold'=>true));
     $this->define("clicks", "IntegerField", array('editable'=>false,'scaffold'=>true));
     $this->define("hashtag", "CharField", array('editable'=>false));

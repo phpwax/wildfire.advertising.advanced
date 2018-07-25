@@ -1,5 +1,5 @@
 jQuery(function($){
-  $("#advertising .existing-files").each(function(){
+  $("#content_tab_advertising .existing-files").each(function(){
     var sliders, holder = $(this);
 
     function set_input(t){

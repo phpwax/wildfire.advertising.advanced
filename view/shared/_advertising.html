@@ -1,1 +1,1 @@
-<?=partial("_media", array("media_controller"=>"admin/advertising"))?>
+<?=partial("_media", array("media_controller"=>"admin/advertising", 'model'=>$model, 'fields'=>$fields, 'field_data'=>$model->get_col('ads')))?>

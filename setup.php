@@ -1,10 +1,6 @@
 <?
+  CMSApplication::register_asset("wildfire", "js", "wildfire.advertising.advanced");
   CMSApplication::register_module("advertising", array('plugin_name'=>'wildfire.advertising.advanced', 'assets_for_cms'=>true, "display_name"=>"Advertising", "link"=>"/admin/advertising/", 'split'=>true));
-
-  AutoLoader::register_view_path("plugin", __DIR__."/view/");
-  AutoLoader::register_controller_path("plugin", __DIR__."/lib/controller/");
-  AutoLoader::register_controller_path("plugin", __DIR__."/resources/app/controller/");
-  AutoLoader::$plugin_array[] = array("name"=>"wildfire.advertising.advanced","dir"=>__DIR__);
 
   if(!defined("CONTENT_MODEL")){
     $con = new ApplicationController(false, false);

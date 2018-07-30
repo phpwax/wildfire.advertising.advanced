@@ -94,6 +94,6 @@ jQuery(function($){
 
   // handle adding or removing ads by proportioning the leftover weights
   jQuery(window).bind("join.added join.removed", function(){
-    $("#advertising .existing-files").trigger("init_sliders").trigger("advert_modify");
+    $("#content_tab_advertising .existing-files").trigger("init_sliders").trigger("advert_modify");
   });
 });

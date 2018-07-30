@@ -38,4 +38,12 @@ class WildfireAdvertAdvanced extends WaxModel{
   public function groups(){
     return WildfireAdvertAdvanced::$ad_types[$this->type];
   }
+
+  public function get_operations($permissions,$join_ids){
+    $operations = $permissions;
+    if($join_ids && count($join_ids) && in_array($this->primval,$join_ids)) $operations["remove"] = 1;
+    elseif($join_ids) $operations["add"] = 1;
+
+    return $operations;
+  }
 }?>

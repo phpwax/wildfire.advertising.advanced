@@ -1,1 +1,7 @@
-<?=partial("_media", array("media_controller"=>"admin/advertising", 'model'=>$model, 'fields'=>$fields, 'field_data'=>$model->get_col('ads')))?>
+<?=partial("_media", array(
+	"media_controller"=>"admin/advertising", 
+	'model'=>$model, 
+	'fields'=>$fields, 
+	'join_model_class'=>$join_model_class,
+	'field_data' =>$model->get_col('ads')
+))?>

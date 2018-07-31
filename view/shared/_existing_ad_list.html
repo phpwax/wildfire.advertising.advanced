@@ -5,7 +5,7 @@
   <div class='existing-files clearfix existing-ad-<?=$group?>' data-field="<?=$field?>">
     <h3><?=$group_title?></h3>
     <?foreach($groups[$group] as $media):?>
-      <?=partial("_existing_media",array('media'=>$media, 'field'=>$field, 'extra_fields_view'=>$field_data->extra_fields_view))?>
+      <?=partial("_existing_media",array('media'=>$media, 'field'=>$field, 'extra_fields_view'=>$field_data->extra_fields_view, 'operation_actions' => $operation_actions))?>
     <?endforeach?>
   </div>
 <?endforeach?>

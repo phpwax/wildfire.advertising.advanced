@@ -30,7 +30,10 @@ $scaffold_columns = array_merge(['preview'=>true], $scaffold_columns);
       <th class='<?=Inflections::underscore($col)?>'><span><?if($model->columns[$col][1]['label']):?><?=$model->columns[$col][1]['label']?><?else:?><?=Inflections::humanize($col)?><?endif?></span></th>
       <?endforeach?>
       <th class='operations'>
-        <?=paginate_links($cms_content, "2")?>
+        <? // dont paginate on relationship list ?>
+        <?if(!isset($existing_media)):?>
+          <?=paginate_links($cms_content, "2")?>
+        <?endif?>
       </th>
       </tr>
     </thead>

@@ -10,6 +10,17 @@ if(($tc = get_class($model)) && ($pid = $current_user->restricted_tree($tc))){
   }
   $cms_content = $cms_content->all();
 }
+//setup existing media
+$existing_media = array();
+$joined_ids = array();
+if($info = Request::param("join_class")){
+  $m = Request::param("join_class");
+  $join = new $m(Request::param("join_id") );
+  if($join && $join->primval && ($f = Request::param("join_field") )) $existing_media = $join->{$f};
+  foreach($existing_media as $ejoin){
+    $joined_ids[] = $ejoin->primval;
+  }
+}
 ?>
 <?foreach($model_filters as $filter) if($filter) $actual_filters = 1?>
 <?if($model instanceof WaxTreeModel && !$actual_filters):?>
@@ -31,6 +42,9 @@ if(($tc = get_class($model)) && ($pid = $current_user->restricted_tree($tc))){
   <?endif?>
   <tbody>
   <?foreach($cms_content as $i=>$row):?>
+    <?
+      $operation_actions = $row->get_operations($permissions, $joined_ids);
+    ?>
     <tr data-media="<?if($row->columns['media_class']):?><?=strtolower($row->media_class)?><?endif?>" class='row <?if($row->columns['status']):?>row_status<?=$row->status?><?endif?> row_<?=($i%2)?> <?=(($primval && $row->primval == $primval)?"active":"")?>' id="row_<?=$row->primval?>" data-model-id="<?=$row->primval?>" data-sort-url="/<?=trim($controller,"/")?>/sort/<?=$node->parent_id?>" data-add-child-url="/<?=trim($controller,"/")?>/create/?<?=$row->table?>[parent_id]=<?=$row->revision?$row->find_master()->primval:$row->primval?>"
       <?foreach($row->columns as $col_name => $col):?>
         <?if($col[1]['info_preview']):?>
@@ -46,12 +60,12 @@ if(($tc = get_class($model)) && ($pid = $current_user->restricted_tree($tc))){
       <td class='operations'>
         <?=partial("_operations", array(
         	"current_user"=>$current_user,
-        	"permissions"=>$permissions, 
+        	"permissions"=>$operation_actions, 
         	"controller"=>$controller, 
         	"action"=>$action, 
         	"row"=>$row, 
         	"cachelink"=>$cachelink, 
-        	'operation_actions'=>$operation_actions
+        	'operation_actions'=>array()
         ))?>
       </td>
     </tr>
